@@ -1,0 +1,19 @@
+aws cloudformation create-stack  --stack-name myFirstTest --region us-east-1 --template-body file://testcfn.yml
+
+aws cloudformation update-stack  --stack-name myFirstTest --region us-east-1 --template-body file://testcfn.yml
+
+aws cloudformation delete-stack  --stack-name myFirstTest --region us-east-1
+
+aws cloudformation create-stack  --stack-name challenge1Stack --region us-east-1 --template-body file://challenge1.yml --parameters file://challenge1-parameters
+
+aws cloudformation delete-stack  --stack-name challenge1Stack --region us-east-1
+
+aws cloudformation create-stack  --stack-name ourdemoinfra --region us-east-1 --template-body file://ourinfra.yml --parameters file://ourinfra-params.json
+.\ourinfra-create.bat ourdemoinfra ourinfra.yml ourinfra-params.json
+
+aws cloudformation update-stack  --stack-name ourdemoinfra --region us-east-1 --template-body file://ourinfra.yml --parameters file://ourinfra-params.json
+.\ourinfra-update.bat ourdemoinfra ourinfra.yml ourinfra-params.json
+
+.\ourinfra-create.bat demoserverstack demoservers.yml demoservers.json
+
+.\ourinfra-update.bat demoserverstack demoservers.yml demoservers.json
